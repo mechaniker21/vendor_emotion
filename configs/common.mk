@@ -138,7 +138,8 @@ PRODUCT_PACKAGES += \
     mGerrit \
     Microbes \
     ROMControl \
-    Stk
+    Stk \
+    KernelAdiutor
 
 # Optional AOKP packages
 PRODUCT_PACKAGES += \
