@@ -275,6 +275,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
+# SuperSU
+PRODUCT_COPY_FILES += \
+    vendor/aokp/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
+
 # by default, do not update the recovery with system updates
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.recovery_update=false
 
