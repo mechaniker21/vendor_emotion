@@ -279,6 +279,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
+# SuperSU
+PRODUCT_COPY_FILES += \
+    vendor/aokp/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
+
 ifndef CM_PLATFORM_SDK_VERSION
   # This is the canonical definition of the SDK version, which defines
   # the set of APIs and functionality available in the platform.  It
