@@ -249,34 +249,6 @@ PRODUCT_VERSION_MAINTENANCE = 0-RC0
 # Version information used on all builds
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys USER=android-build BUILD_UTC_DATE=$(shell date +"%s")
 
-DATE = $(shell vendor/aokp/tools/getdate)
-AOKP_BRANCH=mm
-
-ifneq ($(AOKP_BUILD),)
-    # AOKP_BUILD=<goo version int>/<build string>
-    PRODUCT_PROPERTY_OVERRIDES += \
-        ro.goo.developerid=aokp \
-        ro.goo.rom=aokp \
-        ro.goo.version=$(shell echo $(AOKP_BUILD) | cut -d/ -f1)
-
-    AOKP_VERSION=$(TARGET_PRODUCT)_$(AOKP_BRANCH)_$(shell echo $(AOKP_BUILD) | cut -d/ -f2)
-else
-    ifeq ($(AOKP_BUILDTYPE),)
-        # AOKP_BUILDTYPE not defined
-	AOKP_BUILDTYPE := unofficial
-    endif
-
-    AOKP_VERSION=$(TARGET_PRODUCT)_$(AOKP_BRANCH)_$(AOKP_BUILDTYPE)_$(DATE)
-endif
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.aokp.version=$(AOKP_VERSION) \
-    ro.aokp.branch=$(AOKP_BRANCH) \
-    ro.aokp.device=$(AOKP_DEVICE) \
-    ro.aokp.releasetype=$(AOKP_BUILD) \
-    ro.modversion=$(AOKP_VERSION) \
-    ro.aokp.display.version=$(AOKP_DISPLAY_VERSION)
-
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 # SuperSU
@@ -313,3 +285,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
+
+# Call AOKP Stuff
+$(call inherit-product, vendor/aokp/configs/aokp_common.mk)
