@@ -249,6 +249,9 @@ PRODUCT_VERSION_MAINTENANCE = 0-RC0
 # Version information used on all builds
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys USER=android-build BUILD_UTC_DATE=$(shell date +"%s")
 
+# Call AOKP Stuff
+$(call inherit-product, vendor/aokp/configs/aokp_common.mk)
+
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 # SuperSU
@@ -285,6 +288,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
-
-# Call AOKP Stuff
-$(call inherit-product, vendor/aokp/configs/aokp_common.mk)

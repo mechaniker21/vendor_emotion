@@ -28,8 +28,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.aokp.branch=$(AOKP_VERSION_MAJOR) \
     ro.aokp.releasetype=$(AOKP_VERSION_MAINTENANCE) \
     ro.aokp.device=$(AOKP_DEVICE) \
-    ro.modversion=$(AOKPVERSION) \
-    ro.aokp.display.version=$(AOKP_DISPLAY_VERSION)
+    ro.modversion=$(AOKPVERSION)
 
 # Lower RAM devices
 ifeq ($(AOKP_LOW_RAM_DEVICE),true)
