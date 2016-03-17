@@ -52,6 +52,7 @@ usage() {
 
 # Import Colors
 . ./vendor/emotion/tools/colors
+. ./vendor/emotion/tools/res/emotion_start
 
 
 # EMOTION version
