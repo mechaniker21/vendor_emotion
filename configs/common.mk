@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= aokp
+PRODUCT_BRAND ?= emotion
 
 SUPERUSER_EMBEDDED := true
 
@@ -12,7 +12,7 @@ TARGET_BOOTANIMATION_SIZE := $(shell \
   fi )
 
 # get a sorted list of the sizes
-bootanimation_sizes := $(subst .zip,, $(shell ls vendor/aokp/prebuilt/bootanimation))
+bootanimation_sizes := $(subst .zip,, $(shell ls vendor/emotion/prebuilt/bootanimation))
 bootanimation_sizes := $(shell echo -e $(subst $(space),'\n',$(bootanimation_sizes)) | sort -rn)
 
 # find the appropriate size and set
@@ -29,14 +29,14 @@ endef
 $(foreach size,$(bootanimation_sizes), $(call check_and_set_bootanimation,$(size)))
 
 ifeq ($(TARGET_BOOTANIMATION_HALF_RES),true)
-PRODUCT_BOOTANIMATION := vendor/aokp/prebuilt/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip
+PRODUCT_BOOTANIMATION := vendor/emotion/prebuilt/bootanimation/halfres/$(TARGET_BOOTANIMATION_NAME).zip
 else
-PRODUCT_BOOTANIMATION := vendor/aokp/prebuilt/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
+PRODUCT_BOOTANIMATION := vendor/emotion/prebuilt/bootanimation/$(TARGET_BOOTANIMATION_NAME).zip
 endif
 endif
 
 # Common dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/aokp/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/emotion/overlay/dictionaries
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
@@ -72,46 +72,46 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/aokp/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/aokp/prebuilt/common/bin/50-aokp.sh:system/addon.d/50-aokp.sh \
-    vendor/aokp/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
-    vendor/aokp/prebuilt/common/bin/99-backup.sh:system/addon.d/99-backup.sh \
-    vendor/aokp/prebuilt/common/etc/backup.conf:system/etc/backup.conf
+    vendor/emotion/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/emotion/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/emotion/prebuilt/common/bin/50-emotion.sh:system/addon.d/50-emotion.sh \
+    vendor/emotion/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
+    vendor/emotion/prebuilt/common/bin/99-backup.sh:system/addon.d/99-backup.sh \
+    vendor/emotion/prebuilt/common/etc/backup.conf:system/etc/backup.conf
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/emotion/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/etc/init.d/00start:system/etc/init.d/00start \
-    vendor/aokp/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
-    vendor/aokp/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf \
-    vendor/aokp/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/emotion/prebuilt/common/etc/init.d/00start:system/etc/init.d/00start \
+    vendor/emotion/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
+    vendor/emotion/prebuilt/common/etc/sysctl.conf:system/etc/sysctl.conf \
+    vendor/emotion/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 # userinit support
 ifneq ($(TARGET_BUILD_VARIANT),user)
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/emotion/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
-# AOKP-specific init file
+# EMOTION-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/etc/init.local.rc:root/init.aokp.rc \
+    vendor/emotion/prebuilt/common/etc/init.local.rc:root/init.emotion.rc \
 
 # Installer
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/bin/persist.sh:install/bin/persist.sh \
-    vendor/aokp/prebuilt/common/etc/persist.conf:system/etc/persist.conf
+    vendor/emotion/prebuilt/common/bin/persist.sh:install/bin/persist.sh \
+    vendor/emotion/prebuilt/common/etc/persist.conf:system/etc/persist.conf
 
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/lib/libmicrobes_jni.so:system/lib/libmicrobes_jni.so \
-    vendor/aokp/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
+    vendor/emotion/prebuilt/common/lib/libmicrobes_jni.so:system/lib/libmicrobes_jni.so \
+    vendor/emotion/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/emotion/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -122,16 +122,16 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
 
 PRODUCT_COPY_FILES += \
-    vendor/aokp/configs/permissions/com.aokp.android.xml:system/etc/permissions/com.aokp.android.xml
+    vendor/emotion/configs/permissions/com.emotion.android.xml:system/etc/permissions/com.emotion.android.xml
 
 # Live lockscreen
 PRODUCT_COPY_FILES += \
-    vendor/aokp/configs/permissions/org.cyanogenmod.livelockscreen.xml:system/etc/permissions/org.cyanogenmod.livelockscreen.xml
+    vendor/emotion/configs/permissions/org.cyanogenmod.livelockscreen.xml:system/etc/permissions/org.cyanogenmod.livelockscreen.xml
 
 # Theme engine
-include vendor/aokp/configs/themes_common.mk
+include vendor/emotion/configs/themes_common.mk
 
-# Required AOKP packages
+# Required EMOTION packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
     CellBroadcastReceiver \
@@ -145,7 +145,7 @@ PRODUCT_PACKAGES += \
     Stk \
     KernelAdiutor
 
-# Optional AOKP packages
+# Optional EMOTION packages
 PRODUCT_PACKAGES += \
     libemoji \
     Terminal
@@ -240,7 +240,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=3
 
 # Common overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/aokp/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/emotion/overlay/common
 
 PRODUCT_VERSION_MAJOR = 13
 PRODUCT_VERSION_MINOR = 0
@@ -249,14 +249,14 @@ PRODUCT_VERSION_MAINTENANCE = 0-RC0
 # Version information used on all builds
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys USER=android-build BUILD_UTC_DATE=$(shell date +"%s")
 
-# Call AOKP Stuff
-$(call inherit-product, vendor/aokp/configs/aokp_common.mk)
+# Call EMOTION Stuff
+$(call inherit-product, vendor/emotion/configs/emotion_common.mk)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 # SuperSU
 PRODUCT_COPY_FILES += \
-    vendor/aokp/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
+    vendor/emotion/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
 
 ifndef CM_PLATFORM_SDK_VERSION
   # This is the canonical definition of the SDK version, which defines
@@ -277,11 +277,11 @@ endif
 
 # CyanogenMod Platform SDK Version
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.aokp.build.version.plat.sdk=$(CM_PLATFORM_SDK_VERSION)
+  ro.emotion.version.plat.sdk=$(CM_PLATFORM_SDK_VERSION)
 
 # CyanogenMod Platform Internal
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.aokp.build.version.plat.rev=$(CM_PLATFORM_REV)
+  ro.emotion.version.plat.rev=$(CM_PLATFORM_REV)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 

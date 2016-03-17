@@ -1,7 +1,7 @@
 [gerrit]
-host=gerrit.aokp.co
+host=gerrit.emotion.co
 port=29418
-project=AOKP/vendor_aokp
+project=EMOTION/vendor_emotion
 defaultbranch=kitkat
 defaultremote=review
 defaultrebase=0

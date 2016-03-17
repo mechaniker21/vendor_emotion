@@ -1,3 +1,3 @@
-# This device supports AOKP enhanced NFC
+# This device supports EMOTION enhanced NFC
 PRODUCT_COPY_FILES += \
-    vendor/aokp/configs/permissions/com.aokp.nfc.enhanced.xml:system/etc/permissions/com.aokp.nfc.enhanced.xml
+    vendor/emotion/configs/permissions/com.emotion.nfc.enhanced.xml:system/etc/permissions/com.emotion.nfc.enhanced.xml

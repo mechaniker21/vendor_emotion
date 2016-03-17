@@ -1,8 +1,8 @@
-# Inherit common AOKP stuff
-$(call inherit-product, vendor/aokp/configs/common.mk)
+# Inherit common EMOTION stuff
+$(call inherit-product, vendor/emotion/configs/common.mk)
 
-# Include AOKP audio files
-include vendor/aokp/config/cm_audio.mk
+# Include EMOTION audio files
+include vendor/emotion/config/cm_audio.mk
 
 # Default notification/alarm sounds
 PRODUCT_PROPERTY_OVERRIDES += \

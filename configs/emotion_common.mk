@@ -1,5 +1,5 @@
 #
-# aokp_common.mk: set up our common configuration
+# emotion_common.mk: set up our common configuration
 # Copyright (C) 2015-2016 The PAC-ROM Project
 #
 # This program is free software; you can redistribute it and/or
@@ -17,21 +17,21 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #
 
-# AOKP version
-AOKPVERSION := $(shell echo $(AOKP_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
-BOARD := $(subst aokp_,,$(TARGET_PRODUCT))
-AOKP_BUILD_VERSION := aokp_$(BOARD)_$(AOKPVERSION)_$(shell date +%Y%m%d-%H%M%S)
+# EMOTION version
+EMOTIONVERSION := $(shell echo $(EMOTION_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
+BOARD := $(subst emotion_,,$(TARGET_PRODUCT))
+EMOTION_BUILD_VERSION := emotion_$(BOARD)_$(EMOTIONVERSION)_$(shell date +%Y%m%d-%H%M%S)
 PRODUCT_NAME := $(TARGET_PRODUCT)
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.aokp.version=$(AOKPVERSION) \
-    ro.aokp.branch=$(AOKP_VERSION_MAJOR) \
-    ro.aokp.releasetype=$(AOKP_VERSION_MAINTENANCE) \
-    ro.aokp.device=$(AOKP_DEVICE) \
-    ro.modversion=$(AOKPVERSION)
+    ro.emotion.version=$(EMOTIONVERSION) \
+    ro.emotion.branch=$(EMOTION_VERSION_MAJOR) \
+    ro.emotion.releasetype=$(EMOTION_VERSION_MAINTENANCE) \
+    ro.emotion.device=$(EMOTION_DEVICE) \
+    ro.modversion=$(EMOTIONVERSION)
 
 # Lower RAM devices
-ifeq ($(AOKP_LOW_RAM_DEVICE),true)
+ifeq ($(EMOTION_LOW_RAM_DEVICE),true)
 MALLOC_IMPL := dlmalloc
 TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 

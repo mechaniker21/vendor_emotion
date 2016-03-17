@@ -3,7 +3,7 @@
 # Squish a CM otapackage for distribution
 # cyanogen
 
-. $ANDROID_BUILD_TOP/vendor/aokp/tools/colors
+. $ANDROID_BUILD_TOP/vendor/emotion/tools/colors
 
 OUT_TARGET_HOST=`uname -s`
 if [ x"$OUT_TARGET_HOST" = x"Linux" ]
@@ -24,29 +24,29 @@ if [ -z "$OUT" -o ! -d "$OUT" ]; then
     exit 1
 fi
 
-OPTICHARGER=$ANDROID_BUILD_TOP/vendor/aokp/tools/opticharger
+OPTICHARGER=$ANDROID_BUILD_TOP/vendor/emotion/tools/opticharger
 QUIET=-q
 DELETE_BINS="applypatch applypatch_static check_prereq recovery updater"
 
-# Delete AOKP specific files
-if [ -f $ANDROID_BUILD_TOP/vendor/aokp/tools/squisher.rm ]; then
-    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/aokp/tools/squisher.rm`; do
+# Delete EMOTION specific files
+if [ -f $ANDROID_BUILD_TOP/vendor/emotion/tools/squisher.rm ]; then
+    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/emotion/tools/squisher.rm`; do
         rm -rf $OUT/$RM_FILE
     done
 fi
 
 # Delete target product specific files
-if [ -f $ANDROID_BUILD_TOP/vendor/aokp/tools/$TARGET_PRODUCT-squisher.rm ]; then
-    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/aokp/tools/$TARGET_PRODUCT-squisher.rm`; do
+if [ -f $ANDROID_BUILD_TOP/vendor/emotion/tools/$TARGET_PRODUCT-squisher.rm ]; then
+    for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/emotion/tools/$TARGET_PRODUCT-squisher.rm`; do
         rm -rf $OUT/$RM_FILE
     done
 fi
 
 # Delete specific files for lower ram devices
-if [ "$AOKP_LOW_RAM_DEVICE" = "true" ]; then
-    if [ -f $ANDROID_BUILD_TOP/vendor/aokp/tools/squisher-lrd.rm ]; then
+if [ "$EMOTION_LOW_RAM_DEVICE" = "true" ]; then
+    if [ -f $ANDROID_BUILD_TOP/vendor/emotion/tools/squisher-lrd.rm ]; then
         echo -e "${bldblu}This device is low-RAM"
-        for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/aokp/tools/squisher-lrd.rm`; do
+        for RM_FILE in `cat $ANDROID_BUILD_TOP/vendor/emotion/tools/squisher-lrd.rm`; do
             rm -rf $OUT/$RM_FILE
             echo -e "${cya} $RM_FILE"
         done

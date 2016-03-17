@@ -1,4 +1,4 @@
-[Android Open Kang Project](http://aokp.co)
+[Android Open Kang Project](http://emotion.co)
 ====================================
 
 
@@ -14,7 +14,7 @@ Init core trees without any device/kernel/vendor :
 
     $ repo init -u https://github.com/MarshMallowKang/platform_manifest.git -b mm
 
-Init repo with all devices, kernels and vendors supported by AOKP :
+Init repo with all devices, kernels and vendors supported by EMOTION :
 
     $ repo init -u https://github.com/MarshMallowKang/platform_manifest.git -b mm -g all,kernel,device,vendor
 
@@ -53,6 +53,6 @@ After the sync is finished, please read the [instructions from the Android site]
 You can also build (and see how long it took) for specific devices like this:
 
     . build/envsetup.sh
-    time brunch aokp_mako-userdebug
+    time brunch emotion_mako-userdebug
 
 Remember to `make clobber` every now and then!

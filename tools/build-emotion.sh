@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# build-aokp.sh: the overarching build script for the ROM.
+# build-emotion.sh: the overarching build script for the ROM.
 # Copyright (C) 2015 The PAC-ROM Project
 #
 # This program is free software; you can redistribute it and/or
@@ -51,13 +51,13 @@ usage() {
 
 
 # Import Colors
-. ./vendor/aokp/tools/colors
+. ./vendor/emotion/tools/colors
 
 
-# AOKP version
-export AOKP_VERSION_MAJOR="MM"
-export AOKP_VERSION_MINOR="Alpha 1"
-export AOKP_VERSION_MAINTENANCE="Unofficial"
+# EMOTION version
+export EMOTION_VERSION_MAJOR="MM"
+export EMOTION_VERSION_MINOR="r3"
+export EMOTION_VERSION_MAINTENANCE="Official"
 # Acceptable maintenance versions are; Stable, Official, Nightly or Unofficial
 
 
@@ -68,15 +68,15 @@ fi
 
 
 # Maintenance logic
-if [ -s ~/AOKPname ]; then
-    export AOKP_MAINTENANCE=$(cat ~/AOKPname)
+if [ -s ~/EMOTIONname ]; then
+    export EMOTION_MAINTENANCE=$(cat ~/EMOTIONname)
 else
-    export AOKP_MAINTENANCE="$AOKP_VERSION_MAINTENANCE"
+    export EMOTION_MAINTENANCE="$EMOTION_VERSION_MAINTENANCE"
 fi
-if [ -z "$AOKP_VERSION_MINOR" ]; then
-    export AOKP_VERSION="$AOKP_VERSION_MAJOR $AOKP_MAINTENANCE"
+if [ -z "$EMOTION_VERSION_MINOR" ]; then
+    export EMOTION_VERSION="$EMOTION_VERSION_MAJOR $EMOTION_MAINTENANCE"
 else
-    export AOKP_VERSION="$AOKP_VERSION_MAJOR $AOKP_VERSION_MINOR $AOKP_MAINTENANCE"
+    export EMOTION_VERSION="$EMOTION_VERSION_MAJOR $EMOTION_VERSION_MINOR $EMOTION_MAINTENANCE"
 fi
 
 
@@ -86,8 +86,8 @@ if [ ! -d ".repo" ]; then
     echo ""
     exit 1
 fi
-if [ ! -d "vendor/aokp" ]; then
-    echo -e "${bldred}No vendor/aokp directory found.  Is this a AOKP build tree?${rst}"
+if [ ! -d "vendor/emotion" ]; then
+    echo -e "${bldred}No vendor/emotion directory found.  Is this a EMOTION build tree?${rst}"
     echo ""
     exit 1
 fi
@@ -196,7 +196,7 @@ if [ "$opt_clean" -eq 1 ]; then
     echo ""
 elif [ "$opt_clean" -eq 2 ]; then
     . build/envsetup.sh
-    lunch "aokp_$device-userdebug"
+    lunch "emotion_$device-userdebug"
     make installclean >/dev/null
     echo -e "${bldcya}Output directory is: ${bldred}Dirty${rst}"
     echo ""
@@ -224,10 +224,10 @@ fi
 # Lower RAM devices
 if [ "$opt_lrd" -ne 0 ]; then
     echo -e "${bldcya}Applying optimizations for devices with low RAM${rst}"
-    export AOKP_LOW_RAM_DEVICE=true
+    export EMOTION_LOW_RAM_DEVICE=true
     echo ""
 else
-    unset AOKP_LOW_RAM_DEVICE
+    unset EMOTION_LOW_RAM_DEVICE
 fi
 
 
@@ -299,7 +299,7 @@ rm -f "$OUTDIR"/target/product/"$device"/obj/KERNEL_OBJ/.version
 # Lunch device
 echo ""
 echo -e "${bldcya}Lunching device${rst}"
-lunch "aokp_$device-userdebug"
+lunch "emotion_$device-userdebug"
 
 
 # Get extra options for build
@@ -337,10 +337,10 @@ fi
 
 
 # Start compilation
-if [ -z "$AOKP_VERSION_MINOR" ]; then
-    echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}AOKP-ROM ${bldmag}$AOKP_VERSION_MAJOR ${bldred}$AOKP_MAINTENANCE${rst}"
+if [ -z "$EMOTION_VERSION_MINOR" ]; then
+    echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}EMOTION-ROM ${bldmag}$EMOTION_VERSION_MAJOR ${bldred}$EMOTION_MAINTENANCE${rst}"
 else
-    echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}AOKP-ROM ${bldmag}$AOKP_VERSION_MAJOR ${bldcya}$AOKP_VERSION_MINOR ${bldred}$AOKP_MAINTENANCE${rst}"
+    echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}EMOTION-ROM ${bldmag}$EMOTION_VERSION_MAJOR ${bldcya}$EMOTION_VERSION_MINOR ${bldred}$EMOTION_MAINTENANCE${rst}"
 fi
 echo ""
 make -j$opt_jobs$opt_v$opt_i bacon
@@ -348,4 +348,4 @@ make -j$opt_jobs$opt_v$opt_i bacon
 
 # Cleanup unused built
 rm -f "$OUTDIR"/target/product/"$device"/cm-*.*
-rm -f "$OUTDIR"/target/product/"$device"/aokp_*-ota*.zip
+rm -f "$OUTDIR"/target/product/"$device"/emotion_*-ota*.zip

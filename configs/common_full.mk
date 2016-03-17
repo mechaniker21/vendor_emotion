@@ -1,16 +1,16 @@
-# Inherit common AOKP stuff
-$(call inherit-product, vendor/aokp/configs/common.mk)
+# Inherit common EMOTION stuff
+$(call inherit-product, vendor/emotion/configs/common.mk)
 
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 
 # Include CM audio files
-include vendor/aokp/configs/cm_audio.mk
+include vendor/emotion/configs/cm_audio.mk
 
-# Include AOKP LatinIME dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/aokp/overlay/dictionaries
+# Include EMOTION LatinIME dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/emotion/overlay/dictionaries
 
-# Optional AOKP packages
+# Optional EMOTION packages
 PRODUCT_PACKAGES += \
     CMSettingsProvider \
     Galaxy4 \
@@ -33,7 +33,7 @@ PRODUCT_PACKAGES += \
     libvideoeditor_videofilters \
     libvideoeditorplayer
 
-# Extra tools in AOKP
+# Extra tools in EMOTION
 PRODUCT_PACKAGES += \
     7z \
     lib7z \
