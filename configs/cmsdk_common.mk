@@ -1,7 +1,7 @@
 # Permissions for cmsdk services
 PRODUCT_COPY_FILES += \
-    vendor/aokp/configs/permissions/org.cyanogenmod.theme.xml:system/etc/permissions/org.cyanogenmod.theme.xml \
-    vendor/aokp/configs/permissions/org.cyanogenmod.livelockscreen.xml:system/etc/permissions/org.cyanogenmod.livelockscreen.xml
+    vendor/emotion/configs/permissions/org.cyanogenmod.theme.xml:system/etc/permissions/org.cyanogenmod.theme.xml \
+    vendor/emotion/configs/permissions/org.cyanogenmod.livelockscreen.xml:system/etc/permissions/org.cyanogenmod.livelockscreen.xml
 
 # CM Platform Library
 PRODUCT_PACKAGES += \
@@ -33,9 +33,9 @@ endif
 
 # CyanogenMod Platform SDK Version
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.aokp.build.version.plat.sdk=$(CM_PLATFORM_SDK_VERSION)
+  ro.et.build.version.plat.sdk=$(CM_PLATFORM_SDK_VERSION)
 
 # CyanogenMod Platform Internal
 PRODUCT_PROPERTY_OVERRIDES += \
-  ro.aokp.build.version.plat.rev=$(CM_PLATFORM_REV)
+  ro.et.build.version.plat.rev=$(CM_PLATFORM_REV)
 
