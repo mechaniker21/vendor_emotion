@@ -34,6 +34,8 @@ usage() {
     echo -e "    -i  Ignore minor errors during build"
     echo -e "    -j# Set number of jobs"
     echo -e "    -l  Optimizations for devices with low-RAM"
+    echo -e "    -o# Only build:"
+    echo -e "        1 - Boot Image"
     echo -e "    -r  Reset source tree before build"
     echo -e "    -s# Sync options before build:"
     echo -e "        1 - Normal sync"
@@ -136,11 +138,12 @@ opt_extra=0
 opt_jobs="$CPUS"
 opt_ignore=0
 opt_lrd=0
+opt_only=0
 opt_reset=0
 opt_sync=0
 opt_log=0
 
-while getopts "ac:de:ij:l:rs:w:" opt; do
+while getopts "ac:de:ij:lo:rs:w:" opt; do
     case "$opt" in
     a) opt_adb=1 ;;
     c) opt_clean="$OPTARG" ;;
@@ -149,6 +152,7 @@ while getopts "ac:de:ij:l:rs:w:" opt; do
     i) opt_ignore=1 ;;
     j) opt_jobs="$OPTARG" ;;
     l) opt_lrd=1 ;;
+    o) opt_only="$OPTARG" ;;
     r) opt_reset=1 ;;
     s) opt_sync="$OPTARG" ;;
     w) opt_log="$OPTARG" ;;
@@ -338,14 +342,19 @@ fi
 
 
 # Start compilation
-if [ -z "$EMOTION_VERSION_MINOR" ]; then
-    echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}EMOTION-ROM ${bldmag}$EMOTION_VERSION_MAJOR ${bldred}$EMOTION_MAINTENANCE${rst}"
+if [ "$opt_only" -eq 1 ]; then
+    echo -e "${bldcya}Starting compilation: ${bldgrn}Building Boot Image only${rst}"
+    echo ""
+    make -j$opt_jobs$opt_v$opt_i bootzip
 else
-    echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}EMOTION-ROM ${bldmag}$EMOTION_VERSION_MAJOR ${bldcya}$EMOTION_VERSION_MINOR ${bldred}$EMOTION_MAINTENANCE${rst}"
+    if [ -z "$EMOTION_VERSION_MINOR" ]; then
+        echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}EMOTION-ROM ${bldmag}$EMOTION_VERSION_MAJOR ${bldred}$EMOTION_MAINTENANCE${rst}"
+    else
+        echo -e "${bldcya}Starting compilation: ${bldgrn}Building ${bldylw}EMOTION-ROM ${bldmag}$EMOTION_VERSION_MAJOR ${bldcya}$EMOTION_VERSION_MINOR ${bldred}$EMOTION_MAINTENANCE${rst}"
+    fi
+    echo ""
+    make -j$opt_jobs$opt_v$opt_i bacon
 fi
-echo ""
-make -j$opt_jobs$opt_v$opt_i bacon
-
 
 # Cleanup unused built
 rm -f "$OUTDIR"/target/product/"$device"/cm-*.*
