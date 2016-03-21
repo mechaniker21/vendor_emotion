@@ -170,9 +170,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Exchange2
 
-# Exchange support
-PRODUCT_PACKAGES += \
-    Exchange2
 # Extra tools in CM
 PRODUCT_PACKAGES += \
     libsepol \
