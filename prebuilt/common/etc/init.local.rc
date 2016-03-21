@@ -173,3 +173,18 @@ service userinit /system/xbin/busybox run-parts /system/etc/init.d
     class late_start
     user root
     group root
+
+service supolicy /system/xbin/supolicy --live "allow shell dalvikcache_data_file file write" \
+        "allow shell dalvikcache_data_file dir write" \
+        "allow shell dalvikcache_data_file:file unlink" \
+        "allow shell dalvikcache_data_file:dir remove_name" \
+        "allow shell self:capability dac_override" \
+        "allow mediaserver mediaserver_tmpfs file execute" \
+        "allow isolated_app app_data_file dir search" \
+        "allow untrusted_app self:udp_socket ioctl" \
+        "allow system_app sysfs:file write"
+    disabled
+    oneshot
+
+on post-fs-data
+    start supolicy
