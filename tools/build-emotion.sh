@@ -33,6 +33,7 @@ usage() {
     echo -e "        2 - Quiet build output"
     echo -e "    -i  Ignore minor errors during build"
     echo -e "    -j# Set number of jobs"
+    echo -e "    -k  Rewrite roomservice after dependencies update"
     echo -e "    -l  Optimizations for devices with low-RAM"
     echo -e "    -o# Only build:"
     echo -e "        1 - Boot Image"
@@ -136,6 +137,7 @@ opt_clean=0
 opt_ccache=0
 opt_extra=0
 opt_jobs="$CPUS"
+opt_kr=0
 opt_ignore=0
 opt_lrd=0
 opt_only=0
@@ -143,7 +145,7 @@ opt_reset=0
 opt_sync=0
 opt_log=0
 
-while getopts "ac:de:ij:lo:rs:w:" opt; do
+while getopts "ac:de:ij:klo:rs:w:" opt; do
     case "$opt" in
     a) opt_adb=1 ;;
     c) opt_clean="$OPTARG" ;;
@@ -151,6 +153,7 @@ while getopts "ac:de:ij:lo:rs:w:" opt; do
     e) opt_extra="$OPTARG" ;;
     i) opt_ignore=1 ;;
     j) opt_jobs="$OPTARG" ;;
+    k) opt_kr=1 ;;
     l) opt_lrd=1 ;;
     o) opt_only="$OPTARG" ;;
     r) opt_reset=1 ;;
@@ -173,6 +176,16 @@ if [ "$opt_ccache" -eq 1 ]; then
     unset USE_CCACHE
     echo ""
 fi
+
+
+# Emotion device dependencies
+echo -e "${bldcya}Looking for Emotion product dependencies${bldgrn}"
+if [ "$opt_kr" -ne 0 ]; then
+    vendor/emotion/tools/getdependencies.py "$device" "$opt_kr"
+else
+    vendor/emotion/tools/getdependencies.py "$device"
+fi
+echo -e "${rst}"
 
 
 # Check if last build was made ignoring errors
