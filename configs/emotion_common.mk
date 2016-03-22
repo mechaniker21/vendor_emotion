@@ -50,3 +50,7 @@ ifeq ($(DISABLE_ADB_AUTH),true)
         ro.adb.secure=3 \
         persist.sys.root_access=3
 endif
+
+# AdvancedDisplay
+ PRODUCT_COPY_FILES += \
+    vendor/emotion/prebuilt/common/app/AdvancedDisplay/AdvancedDisplay.apk:system/app/AdvancedDisplay/AdvancedDisplay.apk
