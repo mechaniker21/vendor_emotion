@@ -174,15 +174,19 @@ service userinit /system/xbin/busybox run-parts /system/etc/init.d
     user root
     group root
 
-service supolicy /system/xbin/supolicy --live "allow shell dalvikcache_data_file file write" \
-        "allow shell dalvikcache_data_file dir write" \
-        "allow shell dalvikcache_data_file:file unlink" \
-        "allow shell dalvikcache_data_file:dir remove_name" \
-        "allow shell self:capability dac_override" \
-        "allow mediaserver mediaserver_tmpfs file execute" \
-        "allow isolated_app app_data_file dir search" \
-        "allow untrusted_app self:udp_socket ioctl" \
-        "allow system_app sysfs:file write"
+service supolicy /system/xbin/supolicy --live "allow shell dalvikcache_data_file file { write create }" \
+    "allow shell dalvikcache_data_file dir { add_name create relabelfrom relabelto remove_name rename reparent rmdir search setattr write }" \
+    "allow shell dalvikcache_data_file:file unlink" \
+    "allow mediaserver mediaserver_tmpfs file execute" \
+    "allow isolated_app app_data_file dir search" \
+    "allow untrusted_app kernel dir search" \
+    "allow untrusted_app sysfs_mmi_touch dir search" \
+    "allow init kernel security read_policy" \
+    "allow zygote init unix_stream_socket { read write }" \
+    "allow untrusted_app kernel file { ioctl read write getattr append open }" \
+    "allow untrusted_app self:udp_socket ioctl" \
+    "allow shell self:capability dac_override" \
+    "allow system_app sysfs:file write"    
     disabled
     oneshot
 
