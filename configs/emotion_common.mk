@@ -50,3 +50,7 @@ ifeq ($(DISABLE_ADB_AUTH),true)
         ro.adb.secure=3 \
         persist.sys.root_access=3
 endif
+
+# Savoca-kcal
+ PRODUCT_COPY_FILES += \
+    vendor/emotion/prebuilt/common/app/Savoca-kcal/Savoca-kcal.apk:system/app/Savoca-kcal/Savoca-kcal.apk
