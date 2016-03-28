@@ -142,7 +142,8 @@ PRODUCT_PACKAGES += \
     Microbes \
     ROMControl \
     Stk \
-    KernelAdiutor
+    KernelAdiutor \
+    Savoca-kcal
 
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \
