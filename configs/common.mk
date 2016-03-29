@@ -250,9 +250,6 @@ $(call inherit-product, vendor/emotion/configs/emotion_common.mk)
 PRODUCT_COPY_FILES += \
     vendor/emotion/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
 
-PRODUCT_PROPERTY_OVERRIDES += \
-  ro.cm.display.version=$(CM_DISPLAY_VERSION)
-
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
