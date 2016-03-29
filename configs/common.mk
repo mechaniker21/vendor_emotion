@@ -138,7 +138,6 @@ PRODUCT_PACKAGES += \
     LatinIME \
     LatinImeDictionaryPack \
     libemoji \
-    mGerrit \
     Microbes \
     ROMControl \
     Stk \
