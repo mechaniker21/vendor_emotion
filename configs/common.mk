@@ -143,7 +143,8 @@ PRODUCT_PACKAGES += \
     ROMControl \
     Stk \
     KernelAdiutor \
-    Savoca-kcal
+    Savoca-kcal \
+    AdAway
 
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \
