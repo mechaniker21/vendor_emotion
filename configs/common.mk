@@ -164,7 +164,8 @@ PRODUCT_PACKAGES += \
     ExactCalculator \
     Launcher3 \
     LockClock \
-    Trebuchet
+    Trebuchet \
+    LiveLockScreenService
 
 # Exchange support
 PRODUCT_PACKAGES += \
