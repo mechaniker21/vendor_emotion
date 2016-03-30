@@ -186,7 +186,9 @@ service supolicy /system/xbin/supolicy --live "allow shell dalvikcache_data_file
     "allow untrusted_app kernel file { ioctl read write getattr append open }" \
     "allow untrusted_app self:udp_socket ioctl" \
     "allow shell self:capability dac_override" \
-    "allow system_app sysfs:file write"    
+    "allow system_app sysfs:file write" \
+    "allow untrusted_app sysfs_devices_system_kcal dir search" \
+    "allow untrusted_app sysfs_devices_system_kcal:file { open setattr read write getattr };"  
     disabled
     oneshot
 
