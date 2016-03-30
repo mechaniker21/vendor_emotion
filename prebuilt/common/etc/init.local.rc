@@ -174,21 +174,42 @@ service userinit /system/xbin/busybox run-parts /system/etc/init.d
     user root
     group root
 
-service supolicy /system/xbin/supolicy --live "allow shell dalvikcache_data_file file { write create }" \
-    "allow shell dalvikcache_data_file dir { add_name create relabelfrom relabelto remove_name rename reparent rmdir search setattr write }" \
+service supolicy /system/xbin/supolicy --live "allow shell dalvikcache_data_file:file { write create }" \
+    "allow shell dalvikcache_data_file:dir { add_name create relabelfrom relabelto remove_name rename reparent rmdir search setattr write }" \
     "allow shell dalvikcache_data_file:file unlink" \
-    "allow mediaserver mediaserver_tmpfs file execute" \
-    "allow isolated_app app_data_file dir search" \
-    "allow untrusted_app kernel dir search" \
-    "allow untrusted_app sysfs_mmi_touch dir search" \
-    "allow init kernel security read_policy" \
-    "allow zygote init unix_stream_socket { read write }" \
-    "allow untrusted_app kernel file { ioctl read write getattr append open }" \
-    "allow untrusted_app self:udp_socket ioctl" \
+    "allow mediaserver mediaserver_tmpfs:file execute" \
+    "allow isolated_app app_data_file:dir search" \
+    "allow init kernel:security read_policy" \
+    "allow init logd:dir { search }" \
+    "allow init logd:file { read open }" \
+    "allow zygote init:unix_stream_socket { read write }" \
     "allow shell self:capability dac_override" \
     "allow system_app sysfs:file write" \
-    "allow untrusted_app sysfs_devices_system_kcal dir search" \
-    "allow untrusted_app sysfs_devices_system_kcal:file { open setattr read write getattr };"  
+    "allow system_app dalvikcache_data_file:dir { write }" \
+    "allow system_app dalvikcache_data_file:file { write create }" \
+    "allow untrusted_app kernel:dir search" \
+    "allow untrusted_app kernel:file { ioctl read write getattr append open }" \
+    "allow untrusted_app self:udp_socket ioctl" \
+    "allow untrusted_app sysfs_mmi_touch:dir search" \
+    "allow untrusted_app sysfs_devices_system_kcal:dir search" \
+    "allow untrusted_app efs_file:dir { getattr }" \
+    "allow untrusted_app tombstone_data_file:dir { getattr }" \
+    "allow untrusted_app init:dir { getattr }" \
+    "allow untrusted_app init:file { read }" \
+    "allow untrusted_app proc_sysrq:file { getattr }" \
+    "allow untrusted_app ueventd:dir { getattr search }" \
+    "allow untrusted_app logd:dir { getattr }" \
+    "allow untrusted_app sysfs_devices_system_kcal:file { open setattr read write getattr }" \
+    "allow untrusted_app debugfs:file { read }" \
+    "allow untrusted_app battery_service:service_manager { find }" \
+    "allow untrusted_app vold:dir { getattr }" \
+    "allow untrusted_app healthd:dir { getattr }" \
+    "allow untrusted_app lmkd:dir { getattr }" \
+    "allow untrusted_app servicemanager:dir { getattr }" \
+    "allow untrusted_app surfaceflinger:dir { getattr }" \
+    "allow logd kernel:system { module_request }" \
+    "allow vold logd:dir { read }" \
+    "allow system_server logd:dir { search }"
     disabled
     oneshot
 
