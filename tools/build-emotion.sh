@@ -39,6 +39,7 @@ usage() {
     echo -e "        1 - Boot Image"
     echo -e "    -r  Reset source tree before build"
     echo -e "    -s# Sync options before build:"
+    echo -e "        0 - Force sync"
     echo -e "        1 - Normal sync"
     echo -e "        2 - Make snapshot"
     echo -e "        3 - Restore previous snapshot, then snapshot sync"
@@ -142,7 +143,7 @@ opt_ignore=0
 opt_lrd=0
 opt_only=0
 opt_reset=0
-opt_sync=0
+opt_sync=9
 opt_log=0
 
 while getopts "ac:de:ij:klo:rs:w:" opt; do
@@ -258,7 +259,12 @@ fi
 
 
 # Repo sync/snapshot
-if [ "$opt_sync" -eq 1 ]; then
+if [ "$opt_sync" -eq 0 ]; then
+    # Sync with latest sources
+    echo -e "${bldcya}Force sync latest sources${rst}"
+    repo sync -c -f -qj"$opt_jobs" --force-sync --no-clone-bundle
+    echo ""
+elif [ "$opt_sync" -eq 1 ]; then
     # Sync with latest sources
     echo -e "${bldcya}Fetching latest sources${rst}"
     repo sync -qj"$opt_jobs"
