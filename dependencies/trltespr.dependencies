@@ -18,7 +18,7 @@
     "branch": "mm"
   },
   {
-    "remote":"emotroid_rom",
+    "remote":"emotroid",
     "repository": "Emotroid-Rom/emotion_cm_kernel_trlte",
     "target_path": "kernel/samsung/trlte",
     "branch": "mm"
