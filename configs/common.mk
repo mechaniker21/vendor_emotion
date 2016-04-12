@@ -143,7 +143,8 @@ PRODUCT_PACKAGES += \
     Stk \
     KernelAdiutor \
     Savoca-kcal \
-    AdAway
+    AdAway \
+    EmotionOTA
 
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \

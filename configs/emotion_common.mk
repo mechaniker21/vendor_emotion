@@ -20,7 +20,7 @@
 # EMOTION version
 EMOTIONVERSION := $(shell echo $(EMOTION_VERSION) | sed -e 's/^[ \t]*//;s/[ \t]*$$//;s/ /./g')
 BOARD := $(subst emotion_,,$(TARGET_PRODUCT))
-EMOTION_BUILD_VERSION := emotion_$(BOARD)_$(EMOTIONVERSION)_$(shell date +%Y%m%d-%H%M%S)
+EMOTION_BUILD_VERSION := Emotion-$(BOARD)-$(EMOTIONVERSION)-$(shell date +%Y%m%d-%H%M%S)
 PRODUCT_NAME := $(TARGET_PRODUCT)
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -28,7 +28,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.emotion.branch=$(EMOTION_VERSION_MAJOR) \
     ro.emotion.releasetype=$(EMOTION_VERSION_MAINTENANCE) \
     ro.emotion.device=$(EMOTION_DEVICE) \
-    ro.modversion=$(EMOTIONVERSION)
+    ro.modversion=$(EMOTIONVERSION) \
+    emotion.ota.version=$(EMOTION_BUILD_VERSION)
 
 # Lower RAM devices
 ifeq ($(EMOTION_LOW_RAM_DEVICE),true)
