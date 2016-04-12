@@ -61,7 +61,7 @@ usage() {
 
 # EMOTION version
 export EMOTION_VERSION_MAJOR="MM"
-export EMOTION_VERSION_MINOR="r4"
+export EMOTION_VERSION_MINOR="r5"
 export EMOTION_VERSION_MAINTENANCE="Official"
 # Acceptable maintenance versions are; Stable, Official, Nightly or Unofficial
 
