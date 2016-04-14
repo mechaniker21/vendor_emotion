@@ -24,7 +24,7 @@ k=$(expr $i - 1)
 
 	# Line with after --- until was too long for a small ListView
 	echo '====================' >> $Changelog;
-	echo  "     "$Until_Date       >> $Changelog;
+	echo  "   "$Until_Date       >> $Changelog;
 	echo '===================='	>> $Changelog;
 	echo >> $Changelog;
 
@@ -37,4 +37,5 @@ sed -i 's/project/   */g' $Changelog
 
 cp $Changelog $OUT/system/etc/
 cp $Changelog $OUT/
+. $ANDROID_BUILD_TOP/vendor/emotion/tools/changelog_git
 rm $Changelog

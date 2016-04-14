@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Exports
+
+. $ANDROID_BUILD_TOP/vendor/emotion/tools/colors
+
+export Changelogm=$ANDROID_BUILD_TOP/changelogs/Changelog.mkdn
+
+if [ -f $Changelogm ];
+then
+	rm -f $Changelogm
+fi
+
+touch $Changelogm
+
+# Print something to build output
+echo ${bldblu}"Generating changelog for Github..."${rst}
+
+for i in $(seq 10);
+do
+export After_Date=`date --date="$i days ago" +%m-%d-%Y`
+k=$(expr $i - 1)
+	export Until_Date=`date --date="$k days ago" +%m-%d-%Y`
+
+	# Line with after --- until was too long for a small ListView
+	#echo '====================' >> $Changelog;
+	echo  "###     "$Until_Date       >> $Changelogm;
+	echo '***'	>> $Changelogm;
+	echo >> $Changelogm;
+
+	# Cycle through every repo to find commits between 2 dates
+	repo forall -pc 'git log --oneline --after=$After_Date --until=$Until_Date' >> $Changelogm
+	echo >> $Changelogm;
+done
+
+#sed -i 's/project/*/g;s/\/*$//' $Changelog
+#sed -i 's/project/* **/g;s/$/  /' $Changelogm
+sed -i '/^project/ s/$/**/g' $Changelogm
+sed -i 's/project /* **/g' $Changelogm
+sed -i 's/$/  /g' $Changelogm
