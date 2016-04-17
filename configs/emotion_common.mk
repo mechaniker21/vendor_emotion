@@ -31,6 +31,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(EMOTIONVERSION) \
     emotion.ota.version=$(EMOTION_BUILD_VERSION)
 
+# needed for statistics
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.romstats.url=http://emotion.esy.es/ \
+    ro.romstats.name=Emotion \
+    ro.romstats.buildtype=$(EMOTION_VERSION_MAINTENANCE) \
+    ro.romstats.version=$(EMOTION_VERSION_MINOR) \
+    ro.romstats.tframe=1 \
+    ro.romstats.askfirst=1 \
+    ro.romstats.ga=UA-76534441-1
+
 # Lower RAM devices
 ifeq ($(EMOTION_LOW_RAM_DEVICE),true)
 MALLOC_IMPL := dlmalloc
