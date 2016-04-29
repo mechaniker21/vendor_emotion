@@ -144,7 +144,8 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     Savoca-kcal \
     AdAway \
-    EmotionOTA
+    EmotionOTA \
+    OpenCamera
 
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \
