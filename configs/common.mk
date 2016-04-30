@@ -178,6 +178,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
 
+# Emotroid Utils Library
+PRODUCT_PACKAGES += \
+    org.emotroid.utils
+
+PRODUCT_BOOT_JARS += \
+    org.emotroid.utils
+
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
