@@ -168,7 +168,8 @@ PRODUCT_PACKAGES += \
     LockClock \
     Trebuchet \
     LiveLockScreenService \
-    WeatherProvider
+    WeatherProvider \
+    OpenWeatherMapProvider
     
 # DU Utils Library
 PRODUCT_PACKAGES += \
