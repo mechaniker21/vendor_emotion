@@ -169,7 +169,8 @@ PRODUCT_PACKAGES += \
     Trebuchet \
     LiveLockScreenService \
     WeatherProvider \
-    OpenWeatherMapProvider
+    OpenWeatherMapProvider \
+    YahooCMWeatherProvider
     
 # DU Utils Library
 PRODUCT_PACKAGES += \
