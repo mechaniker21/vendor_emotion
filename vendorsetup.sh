@@ -12,3 +12,4 @@ add_lunch_combo emotion_oneplus2-userdebug
 add_lunch_combo emotion_trltexx-userdebug
 add_lunch_combo emotion_trltespr-userdebug
 add_lunch_combo emotion_trltetmo-userdebug
+add_lunch_combo emotion_expressltexx-userdebug
