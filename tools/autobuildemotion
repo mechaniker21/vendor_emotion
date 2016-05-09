@@ -12,3 +12,6 @@ _build-emotion()
 }
 complete -F _build-emotion ./build-emotion.sh
 
+# to use this
+# add a line like this to your ~/.bashrc
+# source /home/[user]/[path]/[to]/[src]/vendor/emotion/tools/autobuildemotion
