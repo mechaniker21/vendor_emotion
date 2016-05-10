@@ -170,7 +170,8 @@ PRODUCT_PACKAGES += \
     LiveLockScreenService \
     WeatherProvider \
     OpenWeatherMapProvider \
-    YahooCMWeatherProvider
+    YahooCMWeatherProvider \
+    DataUsageProvider
     
 # DU Utils Library
 PRODUCT_PACKAGES += \
