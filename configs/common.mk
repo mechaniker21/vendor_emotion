@@ -144,8 +144,13 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     Savoca-kcal \
     AdAway \
-    EmotionOTA \
     OpenCamera
+
+#Build EmotionOTA only if EMOTION_VERSION_MAINTENANCE isn't Unofficial
+ifneq ($(EMOTION_VERSION_MAINTENANCE),Unofficial)
+PRODUCT_PACKAGES += \
+    EmotionOTA
+endif
 
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \
