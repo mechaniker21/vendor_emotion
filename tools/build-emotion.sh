@@ -24,6 +24,7 @@ usage() {
     echo ""
     echo -e "${bldblu}  Options:${bldcya}"
     echo -e "    -a  Disable ADB authentication and set root access to Apps and ADB"
+    echo -e "    -b  Build a single APK"
     echo -e "    -c# Cleaning options before build:"
     echo -e "        1 - Run make clean"
     echo -e "        2 - Run make installclean"
@@ -134,6 +135,7 @@ fi
 
 
 opt_adb=0
+opt_build=0
 opt_clean=0
 opt_ccache=0
 opt_extra=0
@@ -146,9 +148,10 @@ opt_reset=0
 opt_sync=9
 opt_log=0
 
-while getopts "ac:de:ij:klo:rs:w:" opt; do
+while getopts "abc:de:ij:klo:rs:w:" opt; do
     case "$opt" in
     a) opt_adb=1 ;;
+    b) opt_build=1 ;;
     c) opt_clean="$OPTARG" ;;
     d) opt_ccache=1 ;;
     e) opt_extra="$OPTARG" ;;
@@ -229,6 +232,27 @@ else
     fi
 fi
 
+# Build APK
+if [ "$opt_build" -ne 0 ]; then
+    abort()
+    {
+        echo ""
+        echo -e "${bldred}An error occurred. Bad apk name ($REPLAY). Exiting...${rst}"
+        echo ""
+        exit 1
+    }
+    trap 'abort' 0
+    set -e
+    . build/envsetup.sh
+    lunch "emotion_$device-userdebug"
+    echo -e "${bldcya}What application do you want compile?${rst}"
+    read REPLAY
+    make "$REPLAY"
+    trap : 0
+    echo -e "${bldcya}Done,$REPLAY compiled${rst}"
+    echo ""
+    exit 1
+fi
 
 # Disable ADB authentication
 if [ "$opt_adb" -ne 0 ]; then
