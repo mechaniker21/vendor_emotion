@@ -29,6 +29,10 @@ on post-fs-data
     # Run sysinit
     start sysinit
 
+    # Change permissions on fsck log so it can be added to the dropbox
+    chown root log /dev/fscklogs/log
+    chmod 0640 /dev/fscklogs/log
+
 on boot
 # Set GPU default values on boot
     write /sys/devices/fdb00000.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk 600000000
