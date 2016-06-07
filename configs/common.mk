@@ -176,7 +176,8 @@ PRODUCT_PACKAGES += \
     WeatherProvider \
     OpenWeatherMapProvider \
     YahooCMWeatherProvider \
-    DataUsageProvider
+    DataUsageProvider \
+    WallpaperPicker
     
 # DU Utils Library
 PRODUCT_PACKAGES += \
