@@ -1,6 +1,8 @@
 # Inherit common EMOTION stuff
 $(call inherit-product, vendor/emotion/configs/common.mk)
 
+PRODUCT_SIZE := full
+
 # Bring in all video files
 $(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
 
