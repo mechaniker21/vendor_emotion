@@ -78,6 +78,9 @@ PRODUCT_COPY_FILES += \
     vendor/emotion/prebuilt/common/bin/blacklist:system/addon.d/blacklist \
     vendor/emotion/prebuilt/common/bin/99-backup.sh:system/addon.d/99-backup.sh \
     vendor/emotion/prebuilt/common/etc/backup.conf:system/etc/backup.conf
+# Backup Services whitelist
+PRODUCT_COPY_FILES += \
+    vendor/emotion/configs/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
