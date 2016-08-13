@@ -150,7 +150,8 @@ PRODUCT_PACKAGES += \
     AdAway \
     OpenCamera \
     OmniSwitch \
-    ThemeManagerService
+    ThemeManagerService \
+    WeatherManagerService
 
 #Build EmotionOTA only if EMOTION_VERSION_MAINTENANCE isn't Unofficial
 ifneq ($(EMOTION_VERSION_MAINTENANCE),Unofficial)
