@@ -130,8 +130,10 @@ PRODUCT_COPY_FILES += \
 # Theme engine
 include vendor/emotion/configs/themes_common.mk
 
+ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
 include vendor/emotion/configs/cmsdk_common.mk
+endif
 
 # Required EMOTION packages
 PRODUCT_PACKAGES += \
