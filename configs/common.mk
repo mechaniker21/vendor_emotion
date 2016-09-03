@@ -139,6 +139,7 @@ endif
 PRODUCT_PACKAGES += \
     BluetoothExt \
     CMAudioService \
+    CMParts \
     Development \
     KernelAdiutor \
     Savoca-kcal \
