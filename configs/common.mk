@@ -263,6 +263,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys USER=android-bui
 $(call inherit-product, vendor/emotion/configs/emotion_common.mk)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
+-include vendor/emotion/configs/partner_gms.mk
 
 # SuperSU
 PRODUCT_COPY_FILES += \
