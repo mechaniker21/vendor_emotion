@@ -34,7 +34,7 @@ ifndef CM_PLATFORM_SDK_VERSION
   # the SDK are released.  It should only be incremented when the APIs for
   # the new release are frozen (so that developers don't write apps against
   # intermediate builds).
-  CM_PLATFORM_SDK_VERSION := 6
+  CM_PLATFORM_SDK_VERSION := 7
 endif
 
 ifndef CM_PLATFORM_REV
@@ -43,9 +43,6 @@ ifndef CM_PLATFORM_REV
   # If you are doing a release and this is NOT 0, you are almost certainly doing it wrong
   CM_PLATFORM_REV := 0
 endif
-
-#PRODUCT_PROPERTY_OVERRIDES += \
-#  ro.cm.display.version=$(CM_DISPLAY_VERSION)
 
 # CyanogenMod Platform SDK Version
 #PRODUCT_PROPERTY_OVERRIDES += \
