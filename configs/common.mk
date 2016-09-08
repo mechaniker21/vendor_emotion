@@ -60,6 +60,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
+# Default notification/alarm sounds
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.notification_sound=Argon.ogg \
+    ro.config.alarm_alert=Helium.ogg
+
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += persist.sys.dun.override=0
@@ -127,6 +132,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/emotion/configs/permissions/com.emotion.android.xml:system/etc/permissions/com.emotion.android.xml
 
+# Include CM audio files
+include vendor/emotion/configs/cm_audio.mk
+
 # Theme engine
 include vendor/emotion/configs/themes_common.mk
 
@@ -144,7 +152,10 @@ PRODUCT_PACKAGES += \
     KernelAdiutor \
     Savoca-kcal \
     AdAway \
-    WeatherManagerService
+    LatinIME \
+    LatinImeDictionaryPack \
+    Stk
+#    ROMControl \
 
 #Build EmotionOTA only if EMOTION_VERSION_MAINTENANCE isn't Unofficial
 ifneq ($(EMOTION_VERSION_MAINTENANCE),Unofficial)
@@ -155,7 +166,9 @@ endif
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \
     libemoji \
-    Terminal
+    Terminal \
+    LiveWallpapersPicker \
+    PhotoTable
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
@@ -172,8 +185,10 @@ PRODUCT_PACKAGES += \
     Launcher3 \
     LockClock \
     Trebuchet \
-    LiveLockScreenService \
-    WeatherProvider
+    WeatherManagerService \
+    WeatherProvider \
+    SoundRecorder \
+    Screencast
 
 # Exchange support
 PRODUCT_PACKAGES += \
@@ -194,7 +209,18 @@ PRODUCT_PACKAGES += \
     oprofiled \
     sqlite3 \
     strace \
-    pigz
+    pigz \
+    7z \
+    lib7z \
+    bash \
+    bzip2 \
+    curl \
+    powertop \
+    unrar \
+    unzip \
+    vim \
+    wget \
+    zip
 
 # Custom off-mode charger
 ifneq ($(WITH_CM_CHARGER),false)
