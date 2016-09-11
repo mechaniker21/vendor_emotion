@@ -9,7 +9,7 @@
     "remote":"emotroid",
     "repository": "Emotroid-Rom/android_device_samsung_trltexx",
     "target_path": "device/samsung/trltexx",
-    "branch": "mm"
+    "branch": "mm_test"
   },
   {
     "remote":"emotroid",
@@ -21,7 +21,7 @@
     "remote":"emotroid",
     "repository": "Emotroid-Rom/emotion_cm_kernel_trlte",
     "target_path": "kernel/samsung/trlte",
-    "branch": "mm"
+    "branch": "public_test"
   },
   {
     "remote": "cm",
