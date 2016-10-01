@@ -292,7 +292,8 @@ $(call inherit-product, vendor/emotion/configs/emotion_common.mk)
 
 # SuperSU
 PRODUCT_COPY_FILES += \
-    vendor/emotion/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
+   vendor/emotion/prebuilt/common/etc/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+   vendor/emotion/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
