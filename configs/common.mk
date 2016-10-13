@@ -155,7 +155,7 @@ PRODUCT_PACKAGES += \
     LatinIME \
     LatinImeDictionaryPack \
     Stk
-#    ROMControl \
+#   ROMControl \
 
 #Build EmotionOTA only if EMOTION_VERSION_MAINTENANCE isn't Unofficial
 ifneq ($(EMOTION_VERSION_MAINTENANCE),Unofficial)
@@ -166,9 +166,9 @@ endif
 # Optional EMOTION packages
 PRODUCT_PACKAGES += \
     libemoji \
-    Terminal \
     LiveWallpapersPicker \
-    PhotoTable
+    PhotoTable \
+    Terminal
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
@@ -177,18 +177,21 @@ PRODUCT_PACKAGES += \
 # Custom CM packages
 PRODUCT_PACKAGES += \
     AudioFX \
-    CMWallpapers \
+    CMAudioService \
     CMFileManager \
+    CMParts \
     CMSettingsProvider \
+    CMWallpapers \
     Eleven \
     ExactCalculator \
     Launcher3 \
     LockClock \
-    Trebuchet \
-    WeatherManagerService \
-    WeatherProvider \
+    Screencast \
     SoundRecorder \
-    Screencast
+    Trebuchet \
+    WallpaperPicker \
+    WeatherManagerService \
+    WeatherProvider
 
 # Exchange support
 PRODUCT_PACKAGES += \
@@ -196,26 +199,26 @@ PRODUCT_PACKAGES += \
 
 # Extra tools in CM
 PRODUCT_PACKAGES += \
-    libsepol \
-    mke2fs \
-    tune2fs \
-    nano \
-    htop \
-    mkfs.ntfs \
-    fsck.ntfs \
-    mount.ntfs \
-    gdbserver \
-    micro_bench \
-    oprofiled \
-    sqlite3 \
-    strace \
-    pigz \
     7z \
-    lib7z \
     bash \
     bzip2 \
     curl \
+    fsck.ntfs \
+    gdbserver \
+    htop \
+    lib7z \
+    libsepol \
+    micro_bench \
+    mke2fs \
+    mkfs.ntfs \
+    mount.ntfs \
+    nano \
+    oprofiled \
+    pigz \
     powertop \
+    sqlite3 \
+    strace \
+    tune2fs \
     unrar \
     unzip \
     vim \
