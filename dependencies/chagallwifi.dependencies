@@ -24,6 +24,12 @@
     "branch": "mm"
   },
   {
+    "remote":"emotroid",
+    "repository": "Emotroid-Rom/android_device_samsung_chagall_klimt_common",
+    "target_path": "device/samsung/chagall-klimt-common",
+    "branch": "mm"
+  },
+  {
     "remote": "emotroid",
     "repository": "Emotroid-Rom/android_vendor_samsung_chagall_klimt_common",
     "target_path": "vendor/samsung/chagall-klimt-common",
