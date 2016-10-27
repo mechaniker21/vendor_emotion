@@ -25,8 +25,26 @@
   },
   {
     "remote":"emotroid",
+    "repository": "Emotroid-Rom/android_hardware_samsung_slsi_exynos5420",
+    "target_path": "hardware/samsung_slsi/exynos5420",
+    "branch": "mm"
+  },
+  {
+    "remote":"emotroid",
+    "repository": "Emotroid-Rom/android_hardware_samsung_slsi_exynos",
+    "target_path": "hardware/samsung_slsi/exynos",
+    "branch": "mm"
+  },
+    {
+    "remote":"emotroid",
     "repository": "Emotroid-Rom/android_device_samsung_chagall_klimt_common",
     "target_path": "device/samsung/chagall-klimt-common",
+    "branch": "mm"
+  },
+  {
+    "remote":"emotroid",
+    "repository": "Emotroid-Rom/android_hardware_samsung_slsi_exynos5-insignal",
+    "target_path": "hardware/samsung_slsi/exynos5-insignal",
     "branch": "mm"
   },
   {
