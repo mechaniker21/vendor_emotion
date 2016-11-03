@@ -299,10 +299,6 @@ $(call inherit-product, vendor/emotion/configs/emotion_common.mk)
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 -include vendor/emotion/configs/partner_gms.mk
 
-# SuperSU
-PRODUCT_COPY_FILES += \
-    vendor/emotion/prebuilt/common/etc/supersu.zip:supersu/supersu.zip
-
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
 
 -include vendor/cyngn/product.mk
