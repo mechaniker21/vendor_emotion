@@ -301,7 +301,3 @@ $(call inherit-product, vendor/emotion/configs/emotion_common.mk)
 -include vendor/emotion/configs/partner_gms.mk
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
-
--include vendor/cyngn/product.mk
-
-$(call prepend-product-if-exists, vendor/extra/product.mk)
