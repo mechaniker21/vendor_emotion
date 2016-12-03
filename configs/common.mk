@@ -166,7 +166,8 @@ PRODUCT_PACKAGES += \
     libemoji \
     LiveWallpapersPicker \
     PhotoTable \
-    Terminal
+    Terminal \
+    masquerade
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
